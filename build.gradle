@@ -1,65 +1,40 @@
 buildscript {
     repositories {
-        maven {
-            url 'https://dl.bintray.com/giancosta86/Hephaestus'
-        }
+        //TODO! Del this!
+        mavenLocal()
 
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'info.gianlucacosta.moonlicense:moonlicense-gradle:5.0'
-        classpath 'info.gianlucacosta.aurora:aurora:9.1'
-
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'info.gianlucacosta.aurora:aurora:10.0.0-SNAPSHOT'
     }
 }
 
 
-
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'com.jfrog.bintray'
 
-apply plugin: 'info.gianlucacosta.moonlicense'
 apply plugin: 'info.gianlucacosta.aurora'
 
 
 group 'info.gianlucacosta.asgard'
 archivesBaseName = 'odin'
-version '1.0'
+version '2.0.0-SNAPSHOT'
 
 description = 'Java library for German lexicons'
 
 
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-}
-
-
 dependencies {
     compile 'org.hibernate:hibernate-entitymanager:5.2.10.Final'
     compile 'org.hsqldb:hsqldb:2.4.0'
 
-    compile 'info.gianlucacosta.asgard:balmung:1.0'
+    compile 'info.gianlucacosta.asgard:balmung:2.0.0-SNAPSHOT'
 
     testCompile 'junit:junit:4.12'
 }
-
-
-
-moonLicense {
-    license = apache2
-
-    productInfo {
-        productName = 'Odin'
-        inceptionYear = 2017
-        copyrightHolder = 'Gianluca Costa'
-    }
-}
-
 
 aurora {
     gitHubUser = 'giancosta86'
@@ -68,21 +43,5 @@ aurora {
         name = 'Gianluca Costa'
         email = 'gianluca@gianlucacosta.info'
         url = 'http://gianlucacosta.info/'
-    }
-
-    bintray {
-        repo = 'Hephaestus'
-        licenses = ['Apache-2.0']
-
-        labels = [
-                'German',
-                'linguistics',
-                'lexicon',
-                'parser',
-                'Hibernate',
-                'ORM',
-                'Java',
-                'library'
-        ]
     }
 }
